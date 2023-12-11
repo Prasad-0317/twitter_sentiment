@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Montserrat:wght@300&family=Mulish:wght@300&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Piazzolla:opsz,wght@8..30,200;8..30,300;8..30,400;8..30,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Caveat', cursive;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Mulish', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Piazzolla', serif;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    display: flex;
+}
+
+#menu{
+    background: rgb(9, 9, 50);
+    width:300px;
+    height: auto;
+    color: white;
+    padding-left: 5px;
+}
+
+#menu .logo{
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 30px 8px 30px 18px;
+}
+#menu .logo img{
+    width: 40px;
+    margin-right: 10px;
+}
+#pages ul li{
+    list-style: none;
+    padding:15px;
+}
+
+#pages ul li i{
+    padding:8px;
+    transition: 0.3s ease;
+}
+
+#pages ul li a{
+    text-decoration: none;
+    color: rgb(216, 203, 186);
+    font-weight: 300;
+    transition: 0.3s ease;
+}
+
+#pages ul li:hover{
+    background-color: rgba(0, 0, 0, 0.44);
+    cursor:pointer;
+}
+#pages ul li:nth-child(1){
+    border-left: 4px white;
+}
+#pages ul li i{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    margin:0 5px 0 15px
+}
+#pages ul li:hover i,#pages ul li:hover a{
+    color: rgba(255, 255, 255, 0.928);
+    font-weight: bolder;
+}
+#interface{
+    width: calc(100%-300px);
+}
+#interface .navigation{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(245, 242, 242);
+    padding:15px 30px;
+}
+#interface .navigation .search{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+#interface .navigation .search input[type="text"] {
+    padding-left: 11px;
+}
+#interface .navigation .search i{
+    margin-right: 14px;
+}
+#interface .navigation .search input{
+    /* border:none; */
+    outline: none;
+    font-size: 14px;
+    border-radius: 7px;
+
+}
+
+#interface .navigation .profile{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#interface .navigation .profile i{
+    margin-right: 20px;
+    font-size: 19px;
+    font-weight: 400;
+}
+#interface .navigation .bell i{
+    margin-right: 20px;
+}
+#interface .dash{
+    margin-left: 45px;
+    margin-bottom: 10px;
+}
+iframe{
+    width: -webkit-fill-available;
+}
+.hidden {
+    display: none;
+  }
+/* <h1>Sentiment Analysis Dashboard</h1>
+    <iframe title="ISRO" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=2ae7d931-0b21-4d87-9ac3-e1c9cf3e876b&autoAuth=true&ctid=cca3f0fe-586f-4426-a8bd-b8146307e738" frameborder="0" allowFullScreen="true"></iframe> */
