@@ -89,67 +89,6 @@ if session_state.fetch_clicked:
             tokenizer = AutoTokenizer.from_pretrained(MODEL)
             model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-            # print(example)
-            # sia.polarity_scores(example)
-
-            # encoded_text = tokenizer(example, return_tensors='pt')
-            # output = model(**encoded_text)
-            # scores = output[0][0].detach().numpy()
-            # scores = softmax(scores)
-            # scores_dict = {
-            #     'roberta_neg' : scores[0],
-            #     'roberta_neu' : scores[1],
-            #     'roberta_pos' : scores[2]
-            # }
-            # print(scores_dict)
-
-            # def polarity_scores_roberta(example):
-            #     encoded_text = tokenizer(example, return_tensors='pt')
-            #     output = model(**encoded_text)
-            #     scores = output[0][0].detach().numpy()
-            #     scores = softmax(scores)
-            #     scores_dict = {
-            #         'roberta_neg' : scores[0],
-            #         'roberta_neu' : scores[1],
-            #         'roberta_pos' : scores[2]
-            #     }
-            #     return scores_dict
-
-            # data
-
-            # df
-
-            # res = {}
-            # for i, row in tqdm(df.iterrows(), total=len(df)):
-            #     try:
-            #         text = row['text']
-            #         myid = row['id']
-            #         vader_result = sia.polarity_scores(text)
-            #         vader_result_rename = {}
-            #         for key, value in vader_result.items():
-            #             vader_result_rename[f"vader_{key}"] = value
-            #         roberta_result = polarity_scores_roberta(text)
-            #         both = {**vader_result_rename, **roberta_result}
-            #         res[myid] = both
-            #     except RuntimeError:
-            #         print(f'Broke for id {myid}')
-
-            # results_df = pd.DataFrame(res).T
-            # results_df = results_df.reset_index().rename(columns={'index': 'id'})
-            # results_df = results_df.merge(df, how='left')
-
-            # # results_df.columns
-
-            # from transformers import pipeline
-
-            # sent_pipeline = pipeline("sentiment-analysis")
-
-            # sent_pipeline('neutral')
-
-            # sent_pipeline('i dont know')
-
-            # sia.polarity_scores('not good')
-
             import nltk
             nltk.downloader.download('vader_lexicon')
             def label_text(text):
