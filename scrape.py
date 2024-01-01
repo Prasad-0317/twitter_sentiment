@@ -1,7 +1,6 @@
 import pandas as pd
 from ntscraper import Nitter
 import streamlit as st
-# scraper = Nitter()
 
 def get_tweets(name,modes,no):
   scraper = Nitter()
@@ -20,8 +19,8 @@ class SessionState:
 session_state = SessionState()
 
 with st.form(key='tweet_fetch_form'):
-    user_name = st.text_input("Enter Twitter handle, term, or hashtag", key='user_name')
-    user_mode = st.selectbox("Select Mode", ['term', 'hashtag','user'], key='user_mode')
+    user_name = st.text_input("Enter Twitter term, or hashtag", key='user_name')
+    user_mode = st.selectbox("Select Mode", ['term', 'hashtag'], key='user_mode')
     user_number = st.number_input("Enter Number of Tweets", min_value=1, max_value=1000, step=1, key='user_number')
     
     fetch_button = st.form_submit_button("Fetch Tweets")
@@ -53,13 +52,9 @@ if session_state.fetch_clicked:
 
             sia.polarity_scores('This is the worst thing ever.')
 
-            # sia.polarity_scores(example)
+    
 
             df['id'] = range(1, len(df) + 1)
-
-            # df
-
-            # Run the polarity score on the entire dataset
 
             res = {}
             for i, row in tqdm(df.iterrows(), total=len(df)):
@@ -67,15 +62,10 @@ if session_state.fetch_clicked:
                 myid = row['id']
                 res[myid] = sia.polarity_scores(text)
 
-            # df
-
-            # res
-
             vaders = pd.DataFrame(res).T
             vaders = vaders.reset_index().rename(columns={'index': 'id'})
             vaders = vaders.merge(df, how='left')
 
-            # vaders.head(10)
             st.write("### DataFrame with scores")
             st.write(vaders.head(10))
 
@@ -94,7 +84,6 @@ if session_state.fetch_clicked:
                 sid = SentimentIntensityAnalyzer()
                 score = sid.polarity_scores(text)
 
-                # Label the text based on the sentiment score
                 if score['compound'] >= 0.05:
                     label = 'Positive'
                 elif score['compound'] <= -0.05:
@@ -104,11 +93,7 @@ if session_state.fetch_clicked:
 
                 return label
 
-            # Apply the function to the 'text' column and add a new column called 'label'
             df['labelSentiment'] = df['text'].apply(label_text)
-
-            # Print the data frame
-            # print(df)
             st.write("### DataFrame")
             st.write(df)
 
@@ -117,7 +102,8 @@ if session_state.fetch_clicked:
             negative_count = sentiment_column.value_counts()['Negative']
             neutral_count = sentiment_column.value_counts()['Neutral']
 
-            plt.pie([positive_count, negative_count,neutral_count], labels=['Positive', 'Negative','Neutral'], autopct="%1.1f%%",radius=0.5)
+            colors = ['#99ff99', '#ff9999', '#ffcc99']
+            plt.pie([positive_count, negative_count,neutral_count], labels=['Positive', 'Negative','Neutral'],colors=colors, autopct="%1.1f%%",radius=0.5)
 
             st.write('### Sentiment Distribution')
             plt.shadow = True
@@ -151,72 +137,59 @@ if session_state.fetch_clicked:
             st.write("### Count of Reviews by label")
             ax = df['labelSentiment'].value_counts().sort_index().to_frame().plot(kind='bar',
                                                                             figsize=(10, 5))
-            # ax.set_xlabel('Review label')
-            # plt.show()
+
             st.pyplot(plt) 
 
-            # from transformers import AutoTokenizer
-            # from transformers import AutoModelForSequenceClassification
-            # from scipy.special import softmax
-
-            # polarity_scores= sia.polarity_scores(example)
-            # neg_percent = polarity_scores["neg"] * 100
-            # neu_percent = polarity_scores["neu"] * 100
-            # pos_percent = polarity_scores["pos"] * 100
-
-            # # Create a pie chart of the polarity scores
-            # pie_chart_data = [neg_percent, neu_percent, pos_percent]
-            # pie_chart_labels = ["Negative", "Neutral", "Positive"]
-
-            # plt.pie(pie_chart_data, labels=pie_chart_labels, autopct="%1.1f%%")
-            # st.write("Pie Chart of Sentiment Polarity Scores")
-            # plt.show()
-            # st.pyplot(plt) 
-            # visualize the frequent words
             all_words = " ".join([sentence for sentence in df['text']])
 
             from wordcloud import WordCloud
-            wordcloud = WordCloud(width=800, height=600, random_state=42, max_font_size=100).generate(all_words)
+            wordcloud = WordCloud(width=800, height=400, random_state=42, max_font_size=100).generate(all_words)
 
-            # plot the graph
             plt.figure(figsize=(10,6))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
-            # plt.show()
             st.write("## Word Cloud (frequent words)")
             st.pyplot(plt) 
-            len(set(all_words)) # this is the number of unique words in the list
+            len(set(all_words)) 
 
             df = df.assign(label=df['labelSentiment'].map({'Positive': 1, 'Negative': -1,'Neutral':0}))
             vaders = pd.DataFrame(res).T
             vaders = vaders.reset_index().rename(columns={'index': 'id'})
-            # vaders = vaders.merge(df, how='left')
 
-            # frequent words visualization for +ve
             pos_words = " ".join([sentence for sentence in df['text'][df['label']==1]])
 
-            wordcloud = WordCloud(width=800, height=600, random_state=42, max_font_size=100).generate(pos_words)
+            wordcloud = WordCloud(width=800, height=400, random_state=42, max_font_size=100).generate(pos_words)
 
-            # plot the graph
-            plt.figure(figsize=(10,6))
+            plt.figure(figsize=(2,4))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
-            # plt.show()
             st.write("## Positive (frequent words)")
             st.pyplot(plt) 
-            # frequent words visualization for -ve
             neg_words = " ".join([sentence for sentence in df['text'][df['label']==-1]])
 
-            wordcloud = WordCloud(width=800, height=600, random_state=42, max_font_size=100).generate(neg_words)
+            wordcloud = WordCloud(width=800, height=400, random_state=42, max_font_size=100).generate(neg_words)
 
-            # plot the graph
             plt.figure(figsize=(10,6))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
-            # plt.show()
             st.write("## Negative (frequent words)")
             st.pyplot(plt) 
 
-            # df.to_excel('sec_version.xlsx',index=False)
+
+            file_path = 'D:/revanth.xlsx'
+            with pd.ExcelWriter(file_path, engine='openpyxl') as writer:
+                    df.to_excel(writer, index=False)  
+
         else:
             st.warning("Please fill in all the fields")
+
+
+# Add custom CSS
+container_style = """
+        <style>
+        .stApp {
+            background-color: #CBEEF3;
+        }
+        </style>
+    """
+st.markdown(container_style, unsafe_allow_html=True)

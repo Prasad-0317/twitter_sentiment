@@ -10,12 +10,16 @@
     <!-- PyScript CSS -->
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
     <section id="menu">
         <div class="logo">
             <img src="./images/logo.png">
-            <h2>Sentimenta</h2>
+            <h2 style="font-size: 25px;font-weight: bolder;">Sentimenta</h2>
         </div>
         <div id="pages"> 
             <ul>
@@ -26,6 +30,7 @@
                 <ul>
                     <li id="tw"><i class="fa-brands fa-x-twitter"></i><a href="http://localhost:8502/" id="tweets">Twitter</a></li>
                     <li id="ut"><i class="fa-brands fa-youtube"></i><a href="#">Youtube</a></li>
+                    <li id="tw"><i class="fa-brands fa-facebook"></i><a href="http://localhost:8503/" id="tweets">Facebook</a></li>
                 </ul>
             </ul>
         </div>
@@ -51,7 +56,9 @@
                 <i class="fa-solid fa-bell"></i>
             </div>
             <div class="profile">
-                <i class="fa-solid fa-user"></i>
+                <a href="http://localhost:8503/">
+                    <i class="fa-solid fa-user"></i>
+                </a>
             </div>
         </div> 
         <div class="py">

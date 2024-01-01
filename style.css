@@ -32,7 +32,7 @@ body{
     padding: 30px 8px 30px 18px;
 }
 #menu .logo img{
-    width: 40px;
+    width: 84px;
     margin-right: 10px;
 }
 #pages ul li{
@@ -50,6 +50,7 @@ body{
     color: rgb(216, 203, 186);
     font-weight: 300;
     transition: 0.3s ease;
+    font-size: large;
 }
 
 #pages ul li:hover{
@@ -85,7 +86,7 @@ body{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 10px 14px;
+    padding: 12px 38px;
 }
 
 #interface .navigation .search input[type="text"] {
@@ -107,6 +108,12 @@ body{
     justify-content: flex-start;
     align-items: center;
 }
+#interface .navigation .profile:hover{
+    cursor: pointer;
+}
+#interface .navigation .bell:hover{
+    cursor: pointer;
+}
 #interface .navigation .profile i{
     margin-right: 20px;
     font-size: 19px;
@@ -114,6 +121,9 @@ body{
 }
 #interface .navigation .bell i{
     margin-right: 20px;
+}
+#interface .navigation .bell{
+    display: inline;
 }
 #interface .dash{
     margin-left: 45px;

@@ -5,7 +5,7 @@ nltk.download('vader_lexicon')
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import random
 
-st.title("Sentiment Analysis App") 
+st.title("Sentiment Analysis Web-App") 
 
 user_input = st.text_input("Enter some text:", "Sample input")
 
