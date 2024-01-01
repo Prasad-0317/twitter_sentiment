@@ -20,19 +20,25 @@
         <div id="pages"> 
             <ul>
                 <li><i class="fa-solid fa-chart-pie"></i><a href="#" id="iframeLink">Dashboard</a></li>
-                <li><i class="fa-solid fa-keyboard"></i></i><a href="#">Input</a></li>
+                <li><i class="fa-solid fa-keyboard"></i></i><a href="/index.html">Input</a></li>
 
                 <h3><li><i class="fa-solid fa-list"></i>Platforms</li></h3>
                 <ul>
-                    <li id="tw"><i class="fa-brands fa-x-twitter"></i><a href="http://localhost:8502/">Twitter</a></li>
+                    <li id="tw"><i class="fa-brands fa-x-twitter"></i><a href="http://localhost:8502/" id="tweets">Twitter</a></li>
                     <li id="ut"><i class="fa-brands fa-youtube"></i><a href="#">Youtube</a></li>
                 </ul>
             </ul>
         </div>
     </section>
-    <div id="iframeContainer" class="hidden">
-        <iframe title="ISRO" width="1140" height="541.25" id="eg" src="https://app.powerbi.com/reportEmbed?reportId=2ae7d931-0b21-4d87-9ac3-e1c9cf3e876b&autoAuth=true&ctid=cca3f0fe-586f-4426-a8bd-b8146307e738" frameborder="0" allowFullScreen="true"></iframe>
+    <!-- HTML -->
+    <!-- <ul class="tabs">
+        <li><i class="fa-solid fa-chart-pie"></i><a href="#" id="iframeLink">Dashboard</a></li>
+    </ul>
+  
+    <div class="tab-content"> -->
+    <!-- Content will be loaded here -->
     </div>
+    
     <section id="interface">
         <div class="navigation">
             <div class="n1">
@@ -49,15 +55,7 @@
             </div>
         </div> 
         <div class="py">
-            <!-- <py-env>
-                -TextBlob
-            </py-env>
-            <py-env>
-                -streamlit
-            </py-env>
-            <py-script src="sentiment.py"></py-script> -->
             <iframe src="http://localhost:8501/" width="100%" height="600px"></iframe>
-            <iframe title="ISRO" width="1140" height="700" src="https://app.powerbi.com/reportEmbed?reportId=2ae7d931-0b21-4d87-9ac3-e1c9cf3e876b&autoAuth=true&ctid=cca3f0fe-586f-4426-a8bd-b8146307e738" frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </section>
     <script src="script.js"></script>

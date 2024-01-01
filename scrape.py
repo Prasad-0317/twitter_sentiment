@@ -44,8 +44,6 @@ if session_state.fetch_clicked:
             import seaborn as sns
             plt.style.use('ggplot')
             import nltk
-            nltk.download('punkt')
-            nltk.download('averaged_perceptron_tagger')
             from nltk.sentiment import SentimentIntensityAnalyzer
             from tqdm.notebook import tqdm
             nltk.download('vader_lexicon')
